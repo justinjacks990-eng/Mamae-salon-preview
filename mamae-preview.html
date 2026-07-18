@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamae Salon &amp; Beauty Spa — Nakuru</title>
+<meta name="description" content="Mamae Salon & Beauty Spa, Nakuru. Braids, waxing, threading, dreadlocks and hair extensions. Book on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1A22;
+    --pink:#E84E8A;
+    --pink-2:#C43370;
+    --pink-deep:#8E1F52;
+    --cream:#FFFBFC;
+    --blush:#FCE7EF;
+    --line: rgba(43,26,34,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{ font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  @media(min-width:640px){ .wrap{padding:0 40px;} }
+
+  .status-strip{ background:var(--pink-deep); color:#fff; font-size:13px; padding:9px 0; }
+  .status-strip .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .status-dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:#67C58A; margin-right:7px; box-shadow:0 0 0 3px rgba(103,197,138,0.25); }
+  .status-dot.closed{ background:#F0955B; box-shadow:0 0 0 3px rgba(240,149,91,0.22); }
+  .status-strip a{ border-bottom:1px solid rgba(255,255,255,0.4); }
+
+  header{ padding:20px 0 8px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:40px; height:40px; border-radius:9px;
+    background:linear-gradient(155deg, var(--pink), var(--pink-2));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Fraunces', serif; font-weight:600; font-size:18px;
+  }
+  .brand-name{font-family:'Fraunces', serif; font-weight:600; font-size:19px;}
+  .brand-name span{display:block; font-family:'Manrope',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--pink-2); margin-top:1px;}
+  nav.links{display:none; gap:28px; font-size:14px; font-weight:600;}
+  @media(min-width:800px){ nav.links{display:flex;} }
+  .nav-cta{ background:var(--pink-deep); color:#fff; padding:10px 18px; border-radius:30px; font-size:13.5px; font-weight:700; display:inline-flex; align-items:center; gap:7px; }
+
+  .hero{padding:52px 0 60px; display:grid; gap:36px;}
+  @media(min-width:880px){ .hero{grid-template-columns:1.1fr 0.9fr; align-items:center; padding:72px 0 84px;} }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--pink-2); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before{content:''; width:20px; height:2px; background:var(--pink-deep); display:inline-block;}
+  .hero h1{ font-size:clamp(34px, 6vw, 56px); line-height:1.04; }
+  .hero h1 em{ font-style:italic; color:var(--pink-2); }
+  .hero p.lede{ margin-top:18px; font-size:17px; color:#5B4A50; max-width:46ch; }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:14px 24px; border-radius:30px; font-weight:700; font-size:14.5px; border:1.5px solid transparent; cursor:pointer; }
+  .btn-primary{ background:var(--pink-deep); color:#fff; }
+  .btn-primary:hover{ background:#711742; }
+  .btn-ghost{ border-color:var(--pink-deep); color:var(--pink-deep); }
+  .btn-ghost:hover{ background:var(--blush); }
+  .hero-proof{display:flex; gap:22px; margin-top:34px; flex-wrap:wrap;}
+  .proof-item{font-size:13px; color:#5B4A50;}
+  .proof-item b{ display:block; font-family:'Fraunces', serif; font-size:22px; color:var(--pink-deep); font-weight:600; }
+
+  .hero-visual{ position:relative; border-radius:22px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg, var(--blush), #F6C9DC); }
+  .hero-visual img{ width:100%; height:100%; object-fit:cover; }
+  .hero-badge{ position:absolute; left:16px; bottom:16px; right:16px; background:rgba(255,251,252,0.95); backdrop-filter:blur(6px); border-radius:14px; padding:14px 16px; display:flex; align-items:center; gap:12px; box-shadow:0 8px 24px rgba(43,26,34,0.14); }
+  .stars{color:var(--pink-deep); font-size:15px; letter-spacing:1px;}
+
+  .badges{ background:var(--blush); padding:18px 0; }
+  .badge-row{ display:flex; gap:24px; flex-wrap:wrap; justify-content:center; font-size:13px; font-weight:700; color:var(--pink-deep); }
+  .badge-row span{ display:flex; align-items:center; gap:6px; }
+
+  .fixbar{ background:var(--pink-deep); color:#fff; padding:48px 0; }
+  .fixbar-head{ max-width:60ch; margin-bottom:32px; }
+  .fixbar-head .eyebrow{ color:#FBC7DD; }
+  .fixbar-head .eyebrow::before{ background:#fff; }
+  .fixbar-head h2{ font-size:clamp(24px,4vw,32px); color:#fff; }
+  .fixbar-head p{ color:rgba(255,255,255,0.75); margin-top:10px; font-size:15px; }
+  .fixgrid{ display:grid; gap:18px; grid-template-columns:1fr; }
+  @media(min-width:760px){ .fixgrid{ grid-template-columns:repeat(3,1fr); } }
+  .fixcard{ background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:16px; padding:22px; }
+  .fixcard .tag{ font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#FBC7DD; }
+  .fixcard h3{ font-size:17px; color:#fff; margin:10px 0 8px; font-weight:600; }
+  .fixcard p{ font-size:14px; color:rgba(255,255,255,0.75); }
+
+  section{ padding:64px 0; }
+  .section-head{ max-width:56ch; margin-bottom:36px; }
+  .section-head h2{ font-size:clamp(26px,4vw,34px); }
+  .section-head p{ color:#5B4A50; margin-top:10px; font-size:15.5px; }
+
+  .service-list{ display:grid; gap:0; border-top:1px solid var(--line); }
+  .service-row{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:20px 0; border-bottom:1px solid var(--line); }
+  .service-row .name{ font-weight:700; font-size:16px; }
+  .service-row .desc{ font-size:13.5px; color:#5B4A50; margin-top:4px; }
+  .service-row .price{ font-family:'Fraunces', serif; font-weight:600; font-size:18px; white-space:nowrap; color:var(--pink-2); }
+  .price-note{ font-size:12.5px; color:#9C8790; margin-top:14px; }
+
+  .gallery{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  @media(min-width:700px){ .gallery{ grid-template-columns:repeat(4,1fr); } }
+  .gallery div{ border-radius:14px; overflow:hidden; aspect-ratio:1; position:relative; }
+  .gallery img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+  .gallery div:hover img{ transform:scale(1.06); }
+  .gallery .cap{ position:absolute; left:8px; bottom:8px; background:rgba(43,26,34,0.65); color:#fff; font-size:11px; padding:4px 8px; border-radius:6px; }
+
+  .testi{ background:var(--blush); border-radius:20px; padding:36px 28px; }
+  .testi p{ font-family:'Fraunces', serif; font-size:clamp(19px,2.6vw,24px); font-weight:500; line-height:1.4; max-width:64ch; }
+  .testi .who{ margin-top:18px; font-size:13.5px; color:#5B4A50; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .who-avatar{ width:32px; height:32px; border-radius:50%; background:var(--pink); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; font-size:13px; }
+
+  .loc-grid{ display:grid; gap:28px; }
+  @media(min-width:820px){ .loc-grid{ grid-template-columns:1fr 1fr; } }
+  .hours-table{ width:100%; border-collapse:collapse; margin-top:16px; }
+  .hours-table tr{ border-bottom:1px solid var(--line); }
+  .hours-table td{ padding:11px 0; font-size:14.5px; }
+  .hours-table td:last-child{ text-align:right; font-weight:700; }
+  .hours-table tr.today td{ color:var(--pink-2); font-weight:700; }
+  .map-box{ border-radius:18px; overflow:hidden; border:1px solid var(--line); aspect-ratio:4/3; }
+  .map-box iframe{ width:100%; height:100%; border:0; }
+
+  footer{ background:var(--ink); color:#fff; padding:52px 0 100px; }
+  .foot-grid{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:32px; }
+  footer h3{ color:#fff; font-size:20px; margin-bottom:10px; }
+  footer p{ color:rgba(255,255,255,0.6); font-size:14px; max-width:34ch; }
+  .foot-links{ display:flex; gap:22px; font-size:13.5px; font-weight:600; flex-wrap:wrap; }
+  .foot-links a{ color:rgba(255,255,255,0.85); }
+  .foot-bottom{ margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); font-size:12.5px; color:rgba(255,255,255,0.45); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  .sticky-book{ position:fixed; left:0; right:0; bottom:0; z-index:40; background:var(--pink-deep); color:#fff; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 -6px 20px rgba(43,26,34,0.2); }
+  .sticky-book .txt{ font-size:13px; }
+  .sticky-book .txt b{ display:block; font-family:'Fraunces', serif; font-size:15.5px; font-weight:600; }
+  .sticky-book .btn-primary{ background:var(--pink); color:#fff; padding:11px 20px; }
+  @media(min-width:800px){ .sticky-book{ display:none; } }
+  body{ padding-bottom:74px; }
+  @media(min-width:800px){ body{ padding-bottom:0; } }
+
+  .preview-flag{ background:#FFF3E2; border-bottom:1px solid #F0D9B0; color:#7A5A20; font-size:12.5px; text-align:center; padding:8px 16px; }
+</style>
+</head>
+<body>
+
+<div class="preview-flag">👋 Personalized preview for Mamae Salon &amp; Beauty Spa — nothing is live yet. Photos and prices below are placeholders, ready to swap for the real ones.</div>
+
+<div class="status-strip">
+  <div class="wrap">
+    <span><span class="status-dot" id="statusDot"></span><span id="statusText">Checking today's hours…</span></span>
+    <a href="#location">Get directions →</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="brand-name">Mamae<span>Salon &amp; Beauty Spa</span></div>
+    </div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Hours &amp; location</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/254721859018?text=Hi%20Mamae%20Salon%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener">
+      Book on WhatsApp
+    </a>
+  </header>
+
+  <section class="hero" style="padding-top:40px;">
+    <div>
+      <div class="eyebrow">Unisex · braids · waxing · threading · spa</div>
+      <h1>Look good.<br><em>Feel taken care of.</em></h1>
+      <p class="lede">Braids, dreadlocks, waxing, threading and more — for everyone, in a space that's clean, friendly and easy to book. Message us directly on WhatsApp, no waiting on a reply.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/254721859018?text=Hi%20Mamae%20Salon%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener">
+          Book on WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#services">See services &amp; prices</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item"><b>5.0★</b>Google rating</div>
+        <div class="proof-item"><b>7</b>services offered</div>
+        <div class="proof-item"><b>Unisex</b>&amp; child friendly</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop" alt="Salon styling chair">
+      <div class="hero-badge">
+        <div class="stars">★★★★★</div>
+        <div style="font-size:13px; color:#5B4A50;">"Perfect facial work, wifi available, child friendly" — Mrs Phil's, Google review</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="badges">
+  <div class="wrap">
+    <div class="badge-row">
+      <span>🧑‍🤝‍🧑 Unisex — all welcome</span>
+      <span>📶 Free Wi-Fi</span>
+      <span>👶 Child friendly</span>
+      <span>💅 Hands &amp; feet art</span>
+    </div>
+  </div>
+</div>
+
+<div class="fixbar">
+  <div class="wrap">
+    <div class="fixbar-head">
+      <div class="eyebrow">Why this page exists</div>
+      <h2>What a page like this does for Mamae</h2>
+      <p>Built around the exact questions clients keep asking on WhatsApp and Instagram.</p>
+    </div>
+    <div class="fixgrid">
+      <div class="fixcard">
+        <div class="tag">Fixed</div>
+        <h3>"Bei ni ngapi?" answered instantly</h3>
+        <p>Every service listed with a clear price — no back-and-forth before someone decides to book.</p>
+      </div>
+      <div class="fixcard">
+        <div class="tag">Fixed</div>
+        <h3>Booking without the wait</h3>
+        <p>One tap opens WhatsApp with the message ready — works even while you're mid-appointment.</p>
+      </div>
+      <div class="fixcard">
+        <div class="tag">Fixed</div>
+        <h3>Found by new clients on Google</h3>
+        <p>A real page with your services and location helps you show up for searches like "salon Nakuru."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="services">
+    <div class="section-head">
+      <h2>Services &amp; prices</h2>
+      <p>Starting prices below — send your real list and I'll lock these in before we go live.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <div><div class="name">Box braids</div><div class="desc">Full head, protective style</div></div>
+        <div class="price">From KES 2,500</div>
+      </div>
+      <div class="service-row">
+        <div><div class="name">Hair extensions</div><div class="desc">Full head, natural finish</div></div>
+        <div class="price">From KES 3,000</div>
+      </div>
+      <div class="service-row">
+        <div><div class="name">Dreadlocks</div><div class="desc">New start or maintenance</div></div>
+        <div class="price">From KES 2,000</div>
+      </div>
+      <div class="service-row">
+        <div><div class="name">Brazilian waxing</div><div class="desc">Full body or area, hygienic &amp; private</div></div>
+        <div class="price">From KES 1,500</div>
+      </div>
+      <div class="service-row">
+        <div><div class="name">Body waxing</div><div class="desc">Arms, legs or full body</div></div>
+        <div class="price">From KES 1,200</div>
+      </div>
+      <div class="service-row">
+        <div><div class="name">Eyebrow threading</div><div class="desc">Quick, clean shape</div></div>
+        <div class="price">From KES 300</div>
+      </div>
+    </div>
+    <p class="price-note">Placeholder prices — send your real list and I'll swap these in before we go live.</p>
+  </section>
+
+  <section id="gallery">
+    <div class="section-head">
+      <h2>Recent work</h2>
+      <p>Placeholder photos for now — swap in your own client photos anytime.</p>
+    </div>
+    <div class="gallery">
+      <div><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=500&auto=format&fit=crop" alt="Box braids styling"><span class="cap">Braids</span></div>
+      <div><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=500&auto=format&fit=crop" alt="Eyebrow threading treatment"><span class="cap">Threading</span></div>
+      <div><img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?q=80&w=500&auto=format&fit=crop" alt="Dreadlocks styling"><span class="cap">Dreadlocks</span></div>
+      <div><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=500&auto=format&fit=crop" alt="Salon spa treatment room"><span class="cap">Spa &amp; waxing</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="testi">
+      <p>"For all your hair needs, hands and feet art, perfect facial work. Wi-fi available, child friendly."</p>
+      <div class="who"><span class="who-avatar">My</span> Mrs Phil's — 5★ Google review</div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="section-head">
+      <h2>Hours &amp; location</h2>
+      <p>Placeholder hours below — send your real schedule and I'll lock these in.</p>
+    </div>
+    <div class="loc-grid">
+      <div>
+        <table class="hours-table" id="hoursTable">
+          <tr data-day="1"><td>Monday</td><td>8:30 – 19:00</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>8:30 – 19:00</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>8:30 – 19:00</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>8:30 – 19:00</td></tr>
+          <tr data-day="5"><td>Friday</td><td>8:30 – 20:00</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>8:00 – 20:00</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>10:00 – 17:00</td></tr>
+        </table>
+        <a class="btn btn-primary" style="margin-top:20px;" href="https://wa.me/254721859018?text=Hi%20Mamae%20Salon%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener">Book on WhatsApp</a>
+      </div>
+      <div class="map-box">
+        <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7715188240554!2d36.168455677668256!3d-0.27751819971975367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182993176b7bc67f%3A0x7a93625e0464cef4!2sMamae%20Salon%20Beauty%20Spa!5e0!3m2!1sen!2ske!4v1784354846187!5m2!1sen!2ske" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Mamae Salon &amp; Beauty Spa</h3>
+        <p>Braids, waxing, threading, dreadlocks and extensions — booked directly on WhatsApp. Unisex, Wi-Fi, child friendly.</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://wa.me/254721859018" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="tel:+254721859018">Call</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Mamae Salon &amp; Beauty Spa</span>
+      <span>Preview by Justin — customize freely, nothing is final</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-book">
+  <div class="txt">Book your slot<b id="stickyStatus">Open now</b></div>
+  <a class="btn btn-primary" href="https://wa.me/254721859018?text=Hi%20Mamae%20Salon%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+  const hours = {
+    1: [8.5, 19],
+    2: [8.5, 19],
+    3: [8.5, 19],
+    4: [8.5, 19],
+    5: [8.5, 20],
+    6: [8, 20],
+    0: [10, 17]
+  };
+  function updateStatus(){
+    const now = new Date();
+    const day = now.getDay();
+    const h = now.getHours() + now.getMinutes()/60;
+    const today = hours[day];
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+    const sticky = document.getElementById('stickyStatus');
+    let open = false, msg = '';
+
+    if(today && h >= today[0] && h < today[1]){
+      open = true;
+      msg = `Open now · closes ${String(Math.floor(today[1])).padStart(2,'0')}:${today[1]%1?30:'00'}`;
+    } else if(today && h < today[0]){
+      msg = `Closed · opens ${String(Math.floor(today[0])).padStart(2,'0')}:${today[0]%1?30:'00'} today`;
+    } else {
+      msg = 'Closed today · message us to book ahead';
+    }
+
+    text.textContent = msg;
+    dot.className = 'status-dot' + (open ? '' : ' closed');
+    sticky.textContent = open ? 'Open now' : 'Message to book';
+
+    document.querySelectorAll('#hoursTable tr').forEach(row=>{
+      row.classList.toggle('today', Number(row.dataset.day) === day);
+    });
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
+</script>
+
+</body>
+</html>
